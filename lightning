@@ -1,0 +1,32 @@
+	
+	function lightning(){
+			intrvl=0;
+			for(nTimes=0;nTimes<10;nTimes++){
+				intrvl += 100;
+				setTimeout("document.bgColor='black' !important;",intrvl);
+				intrvl += 75;
+				setTimeout("document.bgColor='red !important';",intrvl);
+				intrvl += 100;
+				setTimeout("document.bgColor='blue !important';",intrvl);
+				intrvl += 100;
+				setTimeout("document.bgColor='purple !important' ;",intrvl);
+				intrvl += 80;
+				setTimeout("document.bgColor='white';",intrvl);
+				intrvl += 20;
+				setTimeout("document.bgColor='red';",intrvl);
+				intrvl += 100;
+				setTimeout("document.bgColor='blue';",intrvl);
+				intrvl += 25;
+				setTimeout("document.bgColor='white';",intrvl);
+				intrvl += 100;
+				setTimeout("document.bgColor='red';",intrvl);
+				intrvl += 100;
+				setTimeout("document.bgColor='white';",intrvl);
+				intrvl += 100;
+				setTimeout("document.bgColor='black';",intrvl);
+				intrvl += 75;
+				setTimeout("document.bgColor='red';",intrvl);
+				intrvl += 25;
+				setTimeout("document.bgColor='white';",intrvl);
+		   }
+		}	

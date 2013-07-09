@@ -1,0 +1,137 @@
+<html>
+<head>
+	<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	<link href="css/main.css" rel="stylesheet" media="screen">
+
+  	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<title>Name 10 Things That Aren't Skrillex</title>
+
+	<script>
+	var index=0
+	var audio = new Audio("play.mp3");
+	var skrillex = new Audio("skrillex2.mp3");
+
+	audio.play();
+
+	function playAmelie()
+	{
+		skrillex.pause()
+		audio.play()
+	}
+
+	function playSkrillex(){
+
+		audio.pause()
+		skrillex.play()
+		document.body.style.backgroundImage="url('skrillex.gif')";
+		document.getElementById("next").style.visibility="hidden";
+		$("#skrilldiv").effect("pulsate", { times:200 }, 50);
+
+
+
+		setTimeout(
+			function(){
+				skrillex.pause()
+				audio.play()		
+				$('#congrats').modal('toggle')
+				document.body.style.backgroundImage="none";
+				document.getElementById("next").style.visibility="visible";
+				}, 10000)
+
+	}
+
+
+		var index;
+		var combined = new Array()
+
+		function generateNewGame(){
+			index = 0;
+			var things = ["Puppies","The Great Pyramid","Adam Gomolin",  "Mountains", "Rivers", "MTV","The Wonder Years", "Martha Stewart", "Broadway Musical","Portoguese Manowar", "Financial Industry", "HBO", "Scooters", "The SATs", "Brand Positioning"];
+		
+			var newlist = shuffle(things)
+			var first = newlist.slice(0,2)
+			var last = newlist.slice(2)
+			skrillex_array = last.concat("Skrillex","Skrillex","Skrillex","Skrillex","Skrillex")
+			combined = first.concat(shuffle(skrillex_array))
+			
+			document.getElementById("thing").innerHTML=combined[index];
+			document.getElementById("score").innerHTML=1;
+			return combined
+		}
+
+		function generateThing(){
+			index++
+			randomString = combined[index]
+			document.getElementById("thing").innerHTML=randomString;
+			
+
+			if (randomString=="Skrillex")
+				{
+					playSkrillex();
+					
+					var score = parseInt(document.getElementById("score").innerHTML)
+					document.getElementById("score_final").innerHTML=score
+					var tweetscore = "https://twitter.com/share?text=I named "+score+" things that aren't Skrillex! via @jrlevine&url=http://name10thingsthatarentskrillex.com"
+					document.getElementById("tweet").setAttribute("href", tweetscore);
+
+
+				}				
+				else
+				{
+					var score = parseInt(document.getElementById("score").innerHTML)+1;
+					document.getElementById("score").innerHTML= score
+				}
+			return index
+
+		}
+	
+	
+	
+	function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+	};
+
+	</script>
+</head>
+	
+	<body onload="generateNewGame()">
+	<div class ="jumbotron">
+		<div id="skrilldiv">
+		<h1>Name 10 Things That Aren't Skrillex</h1>
+		<br>
+		<div class="btn btn-large" id="next" onclick="generateThing()">Name Another Thing</div>
+		
+		
+		<br>
+
+		<!-- Modal -->
+		<div id="congrats" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-header">
+		    <h3 id="myModalLabel">Congratulations!</h3>
+		  </div>
+		  <div class="modal-body">
+		    <div class="score">You named <div id="score_final"></div> things that aren't Skrillex!</div>
+		  </div>
+		  <div class="modal-footer">
+		  	<a class="btn" id="tweet" target="_blank">Tweet Your Score</a>
+		    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true" onclick="generateNewGame()">Play Again</button>
+		  </div>
+		</div>
+
+		<br><br>
+		<div class="well container">
+			<div id="thing"></div>
+		</div>
+		<br>
+		<p class="score">Your Score: <div id="score"></div></p>
+		<br><br><br>
+		
+	</div>
+
+
+	</body>
+
+</html>

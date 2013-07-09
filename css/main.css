@@ -1,0 +1,32 @@
+
+.jumbotron{
+	text-align: center;
+	margin: 80px;
+}
+
+.skrillex{
+	z-index:-1;
+	
+}
+#startagain{
+	z-index: 1;
+	margin-top:-52px;
+}
+
+#thing{
+	font-size:150px;
+	line-height: 150px;
+	height:150px;
+	display:table-cell;
+	vertical-align: middle;
+
+}
+.well{
+	height:300px;
+	display:table;
+}
+.score, #score, #score_final{
+	font-size:38.5px;
+	display:inline;
+	line-height: 42px;
+}
